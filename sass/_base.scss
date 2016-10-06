@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+/*===============================================
+	Reset CSS（sassのreset cssをカスタマイズ）
+===============================================*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0;  font-size: 100%; vertical-align: baseline; }
+html { line-height: 1; }
+ol, ul { list-style: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+caption, th, td { text-align: left; font-weight: normal; vertical-align: middle; }
+q, blockquote { quotes: none; }
+q:before, q:after, blockquote:before, blockquote:after { content: ""; content: none; }
+a img { border: none; }
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
+
+/*===============================================
+	html & body
+=============================================== */
+html,body{ width: 100%;}
+
+body{
+	line-height:1.85;
+	color:$baseFontColor;
+	font-size: $baseFontSize;
+	font-family: $baseFont;
+	letter-spacing:0.03em;
+	-webkit-text-size-adjust:100%;
+	-webkit-text-rendering: optimizeLegibility;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	
+	// 表示を少しふわっとする設定_start
+	// （不要なら削除してください）
+		animation: fadeIn 2s ease 0s 1 normal;
+	-webkit-animation: fadeIn 2s ease 0s 1 normal;
+	// 表示を少しふわっとする設定_end
+	
+	@include mediaquery-pc {min-width:$baseWidth}
+}
+
+// 表示を少しふわっとする設定_start	
+@keyframes fadeIn {
+	0% {opacity: 0}
+	100% {opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+	0% {opacity: 0}
+	100% {opacity: 1}
+}
+// 表示を少しふわっとする設定_end
+
+* html body { font-size: 88%;}
+*:first-child+html body { font-size: 88%;}
+
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/*===============================================
+	link
+=============================================== */
+a:link,a:active,a:visited,a:hover{color:$baseFontColor;}
+a{text-decoration:underline;}
+a:hover{text-decoration:none;}
+
+a {
+	text-decoration:none;
+	@include mediaquery-pc {
+		@include transition(all 0.5s);
+		&:hover { @include opacity(0.7);}
+		img { @include transition(all 0.5s);}
+	}
+}
+
+/*===============================================
+	img
+=============================================== */
+
+img {
+	max-width:100%;
+	height:auto;
+	vertical-align:bottom;
+}
+
+/*===============================================
+	frame set
+=============================================== */
+#wrapper {
+	position:relative;
+	overflow:hidden;
+	}
+	
+.inner {
+	@include mediaquery-pc {
+		width:$baseContentWidth;
+		margin:0 auto;
+	}
+	
+	@include mediaquery-sp {
+		width:100%;
+	}
+}
+
+/*===============================================
+	PC & スマホ切り替え
+=============================================== */
+
+/* PC
+-----------------------------------*/
+@include mediaquery-pc {
+	.pcOnly { display:block;}
+	.spOnly { display:none;}
+}
+
+/* SP
+-----------------------------------*/
+@include mediaquery-sp {
+	.pcOnly { display:none;}
+	.spOnly { display:block;}
+}
+
+
+/*===============================================
+	よくあるスタイル
+=============================================== */
+strong { font-weight:bold;}
+.red {color:#ff0000;}
+.small {@include fs(12);}
+
+
+/* clearfix
+-----------------------------------*/
+.cf {
+	@include pie-clearfix;
+}

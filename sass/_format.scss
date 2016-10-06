@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+/* 2カラム用
+==========================================*/
+.col2 {
+	$marginSize:30px;
+	
+	@include mediaquery-pc {
+		@include pie-clearfix;
+		 padding-right:$marginSize;
+		
+		li, div {
+			width:50%;
+			&:nth-child(odd){ float:left; margin-right: $marginSize;}
+			&:nth-child(even){ float:right; margin-right: -$marginSize;}
+		}
+	}
+}
+
+/* 2カラム用隙間なし
+==========================================*/
+.col2noM {
+	@include mediaquery-pc {
+		@include pie-clearfix;
+
+		li, div {
+			width:50%;
+			&:nth-child(odd){ float:left;}
+			&:nth-child(even){ float:right;}
+		}
+	}
+}
+
+/* 3カラム用
+==========================================*/
+.col3 {
+	$marginSize:20px;
+	
+	@include mediaquery-pc {
+		@include pie-clearfix;
+		padding-right: $marginSize * 2;
+		
+		li, div {
+			float:left;
+			width: 33.33%;
+			margin-right: $marginSize;
+			
+			&:nth-child(3n) {
+				margin-right: -$marginSize *2;
+			}
+		}
+	}
+}
+
+/* 3カラム用隙間なし
+==========================================*/
+.col3noM {
+	@include mediaquery-pc {
+		@include pie-clearfix;
+		
+		li, div {
+			float:left;
+			width: 33.33%;
+		}
+	}
+}
+
+/* 4カラム用
+==========================================*/
+.col4 {
+	$marginSize:32px;
+	
+	@include mediaquery-pc {
+		@include pie-clearfix;
+		padding-right: $marginSize *3;
+		
+		li, div {
+			float:left;
+			width: 25%;
+			margin-right: $marginSize;
+			
+			&:nth-child(4n) {
+				margin-right: -$marginSize *3;
+			}
+		}
+	}
+}
+
+/* 4カラム用隙間なし
+==========================================*/
+.col4noM {
+	
+	@include mediaquery-pc {
+		@include pie-clearfix;
+		
+		li, div {
+			float:left;
+			width: 25%;
+		}
+	}
+}

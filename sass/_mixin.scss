@@ -1,0 +1,127 @@
+@charset "utf-8";
+
+/* 基本の横幅
+==========================================*/
+$baseWidth:1260px;
+$baseContentWidth:996px;
+
+/* font familiy
+==========================================*/
+$baseFont: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","游ゴシック",YuGothic,"メイリオ",Meiryo,Osaka,"ＭＳ Ｐゴシック","MS PGothic",Sans-Serif;
+
+
+
+/* color セット
+==========================================*/
+$baseFontColor: #000;
+$blueColor: #0074bf;
+
+/* フォントサイズ指定
+============================================
+@include fs(16);
+==========================================*/
+$baseFontSize: 14px;
+
+@mixin fs($fontSize, $baseFontSize:14){
+	font-size: round(percentage($fontSize / $baseFontSize));
+}
+
+
+/* PCブレイクポイント
+============================================
+@include mediaquery-pc {
+}
+==========================================*/
+@mixin mediaquery-pc {
+	@media print, screen and (min-width: 641px) {
+		@content;
+	}
+}
+
+/* スマホブレククポイント
+============================================
+@include mediaquery-sp {
+}
+==========================================*/
+@mixin mediaquery-sp {
+	@media screen and (max-width: 640px) {
+		@content;
+	}
+}
+
+/* 横幅を px → % へ変換して指定するmixin
+============================================
+@include widtnPercent($parentPxWidth, $pxWidth);
+==========================================*/
+@mixin widtnPercent( $parentPxWidth, $pxWidth ){
+	width: floor((( $pxWidth / $parentPxWidth ) * 10000% )) / 100;
+}
+
+/* テキストの画像置換
+============================================
+@include bg-lir($imgSrc);
+==========================================*/
+@mixin bg-lir($imgSrc) {
+	display:block;
+	width:round(image-width($imgSrc));
+	padding-top:round(image-height($imgSrc));
+	line-height:1.5em;
+	height: 0;
+	background:url($imgSrc) no-repeat 0 0;
+	overflow: hidden;
+	}
+	
+
+/* ロールオーバーで透過
+サイトで統一すること前提です。
+都度透過度を調整してください。
+============================================
+@include hoverStyle;
+==========================================*/
+@mixin hoverStyle {
+	&:hover {
+		filter:alpha(opacity=50);
+		opacity:0.5; 
+		-moz-opacity:0.5;
+	}
+}
+
+/* 画像サイズ
+============================================
+@include imgSize($imgSrc);
+==========================================*/
+@mixin imgSize($imgSrc){
+	width:round(image-width($imgSrc));
+	height:round(image-height($imgSrc));
+}
+
+/* 画像サイズ1/2
+============================================
+@include imgSize2($imgSrc);
+==========================================*/
+@mixin imgSize2($imgSrc){
+	width:round(image-width($imgSrc)/2);
+	height:round(image-height($imgSrc)/2);
+}
+
+
+/* よく使う元々使えるmixin
+================================================================================
+●clearfix
+@include pie-clearfix;
+
+●角丸
+@include border-radius(4px);
+
+●角丸 上のみ
+@include border-top-radius(4px);
+
+●グラデーション
+@include background-image( linear-gradient( #ffdd74, #fdc735 ) );
+
+●ボックスシャドウ
+@include box-shadow(0 0 0 2px #000570);
+
+●ボックス内側シャドウ
+@include box-shadow(0 0 0 2px #000570 inset);
+================================================================================*/

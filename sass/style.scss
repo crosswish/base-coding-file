@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+@import "compass";
+@import "compass/css3/pie";
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+@import "compass/css3/box-shadow";
+
+//// 共通設定
+@import "_mixin";
+
+//// ベース
+@import "_base";
+
+//// ヘッダー
+//@import "_header";
+
+//// フッター
+//@import "_footer";
+
+//// フォーマット
+@import "_format";
+
+/*====================================
+	print
+==================================== */
+@media print {
+	body {
+		width: $baseWidth !important;
+		-webkit-print-color-adjust: exact;
+	}
+	
+	.inner {
+		width:$baseWidth;
+		margin:0 auto;
+	}
+}
