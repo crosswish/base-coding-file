@@ -9,7 +9,7 @@
 		@include pie-clearfix;
 		 padding-right:$marginSize;
 		
-		li, div {
+		& > li, & > div {
 			width:50%;
 			&:nth-child(odd){ float:left; margin-right: $marginSize;}
 			&:nth-child(even){ float:right; margin-right: -$marginSize;}
@@ -23,7 +23,7 @@
 	@include mediaquery-pc {
 		@include pie-clearfix;
 
-		li, div {
+		& > li, & > div {
 			width:50%;
 			&:nth-child(odd){ float:left;}
 			&:nth-child(even){ float:right;}
@@ -40,7 +40,7 @@
 		@include pie-clearfix;
 		padding-right: $marginSize * 2;
 		
-		li, div {
+		& > li, & > div {
 			float:left;
 			width: 33.33%;
 			margin-right: $marginSize;
@@ -58,7 +58,7 @@
 	@include mediaquery-pc {
 		@include pie-clearfix;
 		
-		li, div {
+		& > li, & > div {
 			float:left;
 			width: 33.33%;
 		}
@@ -74,7 +74,7 @@
 		@include pie-clearfix;
 		padding-right: $marginSize *3;
 		
-		li, div {
+		& > li, & > div {
 			float:left;
 			width: 25%;
 			margin-right: $marginSize;
@@ -93,7 +93,7 @@
 	@include mediaquery-pc {
 		@include pie-clearfix;
 		
-		li, div {
+		& > li, & > div {
 			float:left;
 			width: 25%;
 		}
